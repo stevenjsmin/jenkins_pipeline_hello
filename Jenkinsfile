@@ -5,4 +5,7 @@ node {
    		echo 'Hello World 2'
    stage 'Stage 3'
    		echo 'Hello World 3'
+
+   currentBuild.description = #${BUILD_NUMBER}-${GIT_BRANCH}
+
 }
