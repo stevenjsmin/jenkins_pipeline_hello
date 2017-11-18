@@ -6,6 +6,10 @@ node {
    stage 'Stage 3'
    		echo 'Hello World 3'
 
-   currentBuild.description = "#${BUILD_NUMBER}-${BRANCH_NAME}"
+    sh 'git name-rev --name-only HEAD > GIT_BRANCH'
+    sh 'cat GIT_BRANCH'
+    git_branch = readFile('GIT_BRANCH').trim()
+    env.GIT_BRANCH = git_branch
+   currentBuild.description = "#${BUILD_NUMBER}-${env.GIT_BRANCH}"
 
 }
