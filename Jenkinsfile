@@ -6,6 +6,6 @@ node {
    stage 'Stage 3'
    		echo 'Hello World 3'
 
-   currentBuild.description = "#${BUILD_NUMBER}-${env.GIT_BRANCH}"
+   currentBuild.description = "#${BUILD_NUMBER}-${BRANCH_NAME}"
 
 }
