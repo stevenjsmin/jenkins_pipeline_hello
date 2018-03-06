@@ -13,3 +13,5 @@ appiansys {
     projectName = "Project1"
     serverDomain = "Project1 Server Domain"
 }
+
+echo "Changed from develop"
