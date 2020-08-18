@@ -1,6 +1,7 @@
 #!/usr/bin/groovy
 @Library(value='cicd-shared-libs@master', changelog=false) _
 
+def echoMessage
 
 pipeline {
     agent { node { label "master" } }
@@ -25,7 +26,8 @@ pipeline {
             steps {
                 script {
                     echo "AnNyoung from step of stage2"
-                    ping()
+                    echoMessage = ping()
+                    echo echoMessage
                 }
             }
         }
