@@ -1,12 +1,45 @@
-//node {
-//   stage 'Stage 1'
-//   		echo 'Hello World 1'
-//   stage 'Stage 2'
-//   		echo 'Hello World 2'
-//}
+#!/usr/bin/groovy
+@Library(value='cicd-shared-libs@master', changelog=false) _
 
-@Library("appian_pipeline_lib") _
-standardPipeline {
-    projectName = "Project1"
-    serverDomain = "Project1 Server Domain"
+
+pipeline {
+    agent { node { label "master" } }
+
+    options {
+        ansiColor('xterm')
+        timestamps()
+        timeout(time: 1, unit: 'HOURS')
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+    
+    stages {
+        stage("Stage1") {
+            steps {
+                script {
+                    echo "Hi from step1 of stage1"
+                }
+            }
+        }
+        
+        stage("Stage2") {
+            steps {
+                script {
+                    echo "AnNyoung from step of stage2"
+                    ping()
+                }
+            }
+        }
+    } // End of Stages
+    
+    post {
+        failure {
+            script {
+                echo "Run when failure"
+            }
+        }   
+        success {
+            script {
+                echo "Run when success"
+            }
+        }   
 }
