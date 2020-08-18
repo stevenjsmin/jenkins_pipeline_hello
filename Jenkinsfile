@@ -36,10 +36,11 @@ pipeline {
             script {
                 echo "Run when failure"
             }
-        }   
+        }
         success {
             script {
                 echo "Run when success"
             }
-        }   
+        }
+    }
 }
