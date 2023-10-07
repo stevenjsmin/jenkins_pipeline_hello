@@ -3,7 +3,6 @@
 
 def echoMessage
 
-
 pipeline {
     agent { node { label "master" } }
 
